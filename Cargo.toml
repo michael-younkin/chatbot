@@ -1,0 +1,7 @@
+[package]
+name = "chatbot"
+version = "0.1.0"
+authors = ["Michael Younkin <younkin.michael@gmail.com>"]
+
+[dependencies]
+rand = "0.3.14"
