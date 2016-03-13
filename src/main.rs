@@ -14,9 +14,17 @@ fn main() {
     print!("User: ");
     stdout.flush().unwrap();
     for line in stdin.lock().lines().map(|l| l.unwrap()) {
-        seen_input.push(line);
-        let i = rng.gen_range(0, seen_input.len());
-        println!(">> {}", seen_input[i]);
+        seen_input.extend(line.split_whitespace().map(|s| s.to_owned()));
+        print!(">> ");
+        if seen_input.len() > 0 {
+            let response_length = rng.gen_range(3, 15);
+            for i in 0..response_length {
+                print!("{} ", seen_input[rng.gen_range(0, seen_input.len())]);
+            }
+            println!("");
+        } else {
+            println!("...");
+        }
         print!("User: ");
         stdout.flush().unwrap();
     }
